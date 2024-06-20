@@ -1,0 +1,34 @@
+<nav aria-label="pagination" class="pagination">
+    {% if paged_posts.has_other_pages %}
+        {% if paged_posts.has_previous %}
+            <a href="?page={{ paged_posts.previous_page_number }}" class="pagination-btn"
+               aria-label="previous page">
+                <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+            </a>
+        {% else %}
+            <a href="#" class="pagination-btn disabled" aria-label="previous page disabled">
+                <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+            </a>
+        {% endif %}
+
+        {% for post in paged_posts.paginator.page_range %}
+            {% if paged_posts.number == post %}
+                <a href="#" class="pagination-btn active">{{ post }}</a>
+            {% else %}
+                <a href="?page={{ post }}" class="pagination-btn"
+                   aria-label="page {{ post }}">{{ post }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if paged_posts.has_next %}
+            <a href="?page={{ paged_posts.next_page_number }}" class="pagination-btn"
+               aria-label="next page">
+                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+        {% else %}
+            <a href="#" class="pagination-btn disabled" aria-label="next page disabled">
+                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+        {% endif %}
+    {% endif %}
+</nav>

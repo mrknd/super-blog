@@ -1,0 +1,76 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+        <div class="container">
+
+            <div class="post-main">
+
+                <h2 class="headline headline-2 section-title">
+                        <br>
+                        <a href="#" class="span hover-2">Категорія -  "{{ category }}"</a>
+{#                        <span class="span">Recent posts</span>#}
+
+                </h2>
+
+                <p class="section-text">
+                    Не пропустіть останні тенденції
+                </p>
+
+                <ul class="grid-list">
+                    {% for post in posts %}
+                        <li>
+                            <div class="recent-post-card">
+
+                                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
+                                    <img src="{{ post.image.url }}" width="271" height="258"
+                                         loading="lazy"
+                                         alt="Helpful Tips for Working from Home as a Freelancer"
+                                         class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <a href="#" class="card-badge">{{ post.category }}</a>
+
+                                    <h3 class="headline headline-3 card-title">
+                                        <a href="{{ post.get_absolute_url }}"
+                                           class="link hover-2">{{ post.title }}</a>
+                                    </h3>
+
+                                    <p class="card-text">
+                                        {{ post.body | truncatewords:15 }}
+                                    </p>
+
+                                    <div class="card-wrapper">
+                                        <div class="card-tag">
+                                            <a href="#" class="span hover-2"># Travel</a>
+
+                                        </div>
+
+                                        <div class="wrapper">
+                                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                                            <span class="span">3 mins read</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+
+                {% include 'blog/pagination.html' with page=posts %}
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<section class="comment-form">
+    <h3 id="comments">Залишити коментар</h3>
+    {% if user.is_authenticated %}
+        <div>
+            <form action="#comments" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="comment" class="form-control" placeholder="Ваш коментар"></textarea>
+                </div>
+                <button type="submit" value="Submit" style="width: 200px">Додати коментар</button>
+            </form>
+        </div>
+    {% else %}
+        <p style="color: #40c3f7; margin-top: 40px; text-align: center;">Увійдіть, щоб залишити коментар</p>
+    {% endif %}
+</section>
+
+<section class="comments-section">
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="comment-author">{{ comment.user }}</div>
+                <div class="comment-date">{{ comment.created_at }}</div>
+                <div class="comment-body">{{ comment.comment }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="comment">
+            <p class="no-comments">У вас чудова можливість залишити коментар першим</p>
+        </div>
+    {% endif %}
+</section>

@@ -1,0 +1,124 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block title %}{{ single_post.title }}{% endblock %}
+
+{% block content %}
+
+    <div class="container-post-detail">
+        <article>
+            <div class="post-header">
+                <h1 class="post-title">{{ single_post.title }}</h1>
+                <div class="post-image">
+                    <img src="{{ single_post.image.url }}" alt="{{ single_post.title }}">
+                </div>
+                <div class="post-meta">
+                    <a href="{% url 'blog:post_list_by_category' single_post.category.id %}"
+                       class="tag">{{ single_post.category }}</a>
+                    <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="#9ca3af"
+                                      d="M12 22c-5.521 0-10-4.479-10-10s4.479-10 10-10 10 4.479 10 10-4.479 10-10 10zm0-18c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm-.5 4h1v5l4.5 2.5-.5.866-5-2.866v-5.5z"/>
+                            </svg>
+                            {{ single_post.calculate_reading_time }} хв.
+                        </span>
+                    <div class="display-no">
+                    <span class="icon ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="#9ca3af"
+                                      d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V10h14v8zm0-10H5V6h14v2z"/>
+                            </svg>
+                            {{ single_post.publish | date }}
+                        </span>
+                        </div>
+                </div>
+            </div>
+
+            <div class="post-short_description">
+                {{ single_post.short_description|linebreaks }}
+            </div>
+            <div class="post-body">
+                {{ single_post.body | safe }}
+            </div>
+                    <!-- Місце для додаткових зображень -->
+            <div class="post-images">
+                {% for image in single_post.images.all %}
+                    <img src="{{ image.image.url }}" alt="Additional image for {{ single_post.title }}">
+                {% endfor %}
+            </div>
+
+            <div class="post-footer">
+                {% for tag in single_post.tags.all %}
+                    <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="span hover-2">
+                        #{{ tag.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </article>
+        {% if  similar_posts %}
+            <div class="container">
+                <h2 class="headline headline-2 section-title">
+                    <span class="span" style="margin-bottom: 20px;">Рекомендовані пости:</span>
+                </h2>
+
+                {% include 'blog/post/includes/modal_login.html' %}
+                {% include 'blog/post/includes/modal_register.html' %}
+                <ul class="feature-list-post-list">
+                    {% for post in similar_posts %}
+                        <li>
+                            <div class="card feature-card-post-list">
+                                <figure class="card-banner-post-list img-holder"
+                                        style="--width: 1602; --height: 903;">
+                                    <a href="{{ post.get_absolute_url }}" class="img-cover">
+                                        <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
+                                             alt="Self-observation is the first step of inner unfolding"
+                                             class="img-cover">
+                                    </a>
+                                </figure>
+                                <div class="card-content-post-list">
+                                    <div class="card-wrapper">
+                                        <div class="card-badge">
+                                            <a href="{% url 'blog:post_list_by_category' post.category.id %}">{{ post.category }}</a>
+                                        </div>
+                                        <div class="wrapper">
+                                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                                            <span class="span">{{ post.calculate_reading_time }} хв.</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="headline headline-3">
+                                        <a href="{{ post.get_absolute_url }}"
+                                           class="card-title hover-2">{{ post.title }}</a>
+                                    </h3>
+                                    <div class="card-wrapper">
+                                        <div class="profile-card-post-list">
+                                            <div>
+                                                <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-tag-post-list">
+                                            {% for tag in post.tags.all %}
+                                                <a href="{% url "blog:post_list_by_tag" tag.slug %}"
+                                                   class="span hover-2">
+                                                    #{{ tag.name }}
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% include 'blog/pagination.html' with page=posts %}
+            </div>
+            <img src="{% static 'images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt=""
+                 class="feature-bg-post-list">
+        {% endif %}
+        <!-- Comments -->
+
+        {% include 'blog/post/includes/comment_form.html' %}
+
+    </div>
+
+{% endblock %}
