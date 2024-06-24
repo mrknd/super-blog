@@ -12,6 +12,7 @@ from ckeditor.fields import RichTextField
 class Category(models.Model):
     category_name = models.CharField(max_length=50, unique=True)
     category_icon = models.ImageField(upload_to='category_icons')
+    category_color = models.CharField(max_length=10, default='#00bd91')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -48,6 +49,7 @@ class Post(models.Model):
     )
     short_description = models.TextField(max_length=500)
     image = models.ImageField(upload_to='blog_posts_image')
+    featured_image = models.ImageField(upload_to='blog_posts_featured_image', blank=True)
     body = RichTextField(blank=True, null=True)
     body2 = RichTextUploadingField(blank=True, null=True)
     publish = models.DateTimeField(default=timezone.now)

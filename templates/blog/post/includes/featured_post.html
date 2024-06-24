@@ -1,0 +1,49 @@
+{% for post in featured_post %}
+    <li >
+        <div class="card feature-card-post-list margin-feature">
+            <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 303;">
+                <a href="{{ post.get_absolute_url }}" class="img-cover">
+                    <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
+                         alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </a>
+            </figure>
+            <div class="card-content-post-list">
+                <div class="card-wrapper">
+                    <div class="card-badge" style="background-color: {{ post.category.category_color }};">
+                        <a href="{% url 'blog:post_list_by_category' post.category.id %}">{{ post.category }}</a>
+                    </div>
+
+                    <div class="wrapper">
+                        <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                        <span class="span">{{ post.calculate_reading_time }} хв.</span>
+                    </div>
+                </div>
+                <h3 class="headline headline-3">
+                    <a href="{{ post.get_absolute_url }}"
+                       class="card-title hover-2">{{ post.title }}</a>
+                </h3>
+                {#                                <div class="card-wrapper">#}
+                {#                                    <div class="profile-card-post-list">#}
+                {#                                        <div>#}
+                {#                                            <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>#}
+                {#                                        </div>#}
+                {#                                    </div>#}
+                {##}
+                {#                                    <div class="card-tag-post-list">#}
+                {#                                        {% for tag in post.tags.all %}#}
+                {##}
+                {#                                            <div>#}
+                {#                                                <a href="{% url "blog:post_list_by_tag" tag.slug %}"#}
+                {#                                                   class="span hover-2">#}
+                {#                                                    #{{ tag.name }}#}
+                {#                                                </a>#}
+                {#                                            </div>#}
+                {#                                        {% endfor %}#}
+                {##}
+                {#                                    </div>#}
+                {##}
+                {#                                </div>#}
+            </div>
+        </div>
+    </li>
+{% endfor %}

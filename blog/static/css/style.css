@@ -2,6 +2,8 @@
   #CUSTOM PROPERTY
 \*-----------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
 
     /**
@@ -10,23 +12,25 @@
 
     /** Background colors */
     --bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
-    --bg-carolina-blue: hsla(199, 89%, 49%, 1);
-    --bg-prussian-blue: hsla(216, 33%, 20%, 1);
-    --bg-oxford-blue: hsla(222, 44%, 13%, 1);
-    --bg-oxford-blue-2: hsla(222, 47%, 11%, 1);
+    --bg-test: rgba(159, 114, 255, 0.8);
+    --bg-carolina-blue: #00bd91;
+    --bg-prussian-blue: hsl(0, 0%, 100%);
+    --bg-oxford-blue: hsl(0, 0%, 100%);
+    --bg-oxford-blue-2: hsl(0, 0%, 95%);
+    --bg-oxford-blue-3: #f0f0f0;
 
     /** Text colors */
-    --text-white: hsla(0, 0%, 100%, 1);
-    --text-alice-blue: hsla(216, 100%, 95%, 1);
-    --text-columbia-blue: hsla(199, 69%, 84%, 1);
-    --text-wild-blue-yonder: hsla(216, 33%, 68%, 1);
-    --text-carolina-blue: hsla(199, 89%, 49%, 1);
+    --text-white: hsl(0, 0%, 96%);
+    --text-alice-blue: hsl(0, 0%, 5%);
+    --text-columbia-blue: hsl(0, 2%, 9%);
+    --text-wild-blue-yonder: hsl(0, 0%, 0%);
+    --text-carolina-blue: hsl(287, 96%, 26%);
     --text-shadow-blue: hsla(217, 24%, 59%, 1);
     --text-slate-gray: hsla(217, 17%, 48%, 1);
 
     /** Gradient colors */
-    --gradient-1: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%);
-    --gradient-2: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea);
+    --gradient-1: linear-gradient(90deg, #5fea0e, #0bd1d1 51%);
+    --gradient-2: linear-gradient(90deg, #ea9d0e, #0bd1d1 51%, #5f0eea);
     --gradient-3: linear-gradient(0deg, #000d1a, transparent);
 
     /** Border colors */
@@ -44,11 +48,12 @@
      */
 
     /** Font family */
-    --fontFamily-noto_sans: 'Noto Sans', sans-serif;
+    /*--fontFamily-noto_sans: 'Noto Sans', sans-serif;*/
+    --fontFamily-noto_sans: 'Montserrat', sans-serif;
 
     /** Font size */
     --fontSize-1: 2.9rem;
-    --fontSize-2: 2.2rem;
+    --fontSize-2: 2rem;
     --fontSize-3: 1.8rem;
     --fontSize-4: 1.6rem;
     --fontSize-5: 1.5rem;
@@ -65,14 +70,14 @@
     /** Line height */
     --lineHeight-1: 1.3;
     --lineHeight-2: 1.5;
-    --lineHeight-4: 1.5;
+    --lineHeight-4: 1.2;
 
     /**
      * BOX SHADOW
      */
 
     --shadow-1: 0 8px 20px 0 hsla(0, 0%, 0%, 0.05);
-    --shadow-2: 0px 3px 20px hsla(180, 90%, 43%, 0.2);
+    --shadow-2: 0px 3px 20px hsla(0, 0%, 0%, 0.2);
 
     /**
      * BORDER RADIUS
@@ -168,7 +173,7 @@ html {
 }
 
 body {
-    background-color: var(--bg-oxford-blue-2);
+    background-color: var(--bg-oxford-blue-3);
     color: var(--text-shadow-blue);
     font-family: var(--fontFamily-noto_sans);
     font-size: 1.6rem;
@@ -197,10 +202,99 @@ body.nav-active {
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
+/* ----------------- Main container -----------------------------*/
 
-.container {
-    padding-inline: 16px;
+.main-container {
+    display: grid;
+    grid-template-columns: 0.43fr 2fr 0.5fr;
+    color: #000;
+    margin: 0 34px;
+    gap: 34px;
 }
+
+.menu-container div:not(:first-child) {
+    margin-top: 26px;
+}
+
+/* ------------------------------------------------------------- */
+
+
+/*-------------------- Menu Left -------------------------------*/
+
+.menu-container div {
+    max-height: 200px;
+    background: #fff;
+    border-radius: var(--radius-16);
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.07);
+    padding: 10px 10px 10px 14px;
+
+}
+
+
+.menu-header {
+    font-size: 16px;
+    margin: 8px 0 8px 2px;
+    font-weight: 700;
+}
+
+.menu {
+    list-style: none;
+    padding: 0 4px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 6px 16px;
+    position: relative;
+}
+
+.menu li a .sm-line {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    display: inline-block;
+}
+
+.menu li a:hover .sm-line::after {
+    width: 100%;
+}
+
+.menu li a .sm-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(166, 100%, 37%);
+    transition: width 0.3s ease-in-out;
+}
+
+
+/* ------------------ List -----------------------*/
+.menu li a::before {
+    content: '';
+    position: absolute;
+    left: -1px; /* Змістіть трохи ліворуч, або ж налаштуйте за потребою */
+    top: 50%;
+    transform: translateY(-50%) rotate(135deg);
+    width: 6px;
+    height: 6px;
+    background-color: hsl(166, 100%, 37%);
+    clip-path: polygon(0 0, 100% 0, 0 100%); /* Формування трикутника */
+    transition: background-color 0.3s;
+}
+
+.menu li a:hover::before {
+    background-color: deepskyblue; /* Зміна кольору трикутника при наведенні */
+}
+
+/* ------------------------------------------------------------- */
+
 
 .hover-1,
 .hover-2 {
@@ -229,6 +323,8 @@ body.nav-active {
 .headline {
     color: var(--text-columbia-blue);
     line-height: var(--lineHeight-1);
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
 }
 
 .headline-1 {
@@ -238,7 +334,7 @@ body.nav-active {
 }
 
 .headline-2 {
-    font-size: var(--fontSize-2);
+    font-size: var(--fontSize-3);
 }
 
 .headline-3 {
@@ -251,14 +347,14 @@ body.nav-active {
 }
 
 .headline .span {
-    background-image: var(--gradient-1);
+    /*background-image: var(--gradient-1);*/
     display: inline-block;
-    -webkit-text-fill-color: transparent;
+    /*-webkit-text-fill-color: transparent;*/
     -webkit-background-clip: text;
 }
 
 .btn {
-    background-image: var(--gradient-2);
+    background-color: #000;
     background-size: 200%;
     background-position: left;
     color: var(--white);
@@ -293,7 +389,10 @@ body.nav-active {
 
 .card {
     background-color: var(--bg-oxford-blue);
-    border: 1px solid var(--border-prussian-blue);
+    /*border: 1px solid var(--border-prussian-blue);*/
+    /*box-shadow: 1px 15px 15px 2px #0000000f;*/
+    /*box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.1);*/
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.07);
 }
 
 .img-holder {
@@ -343,6 +442,7 @@ body.nav-active {
   #HEADER
 \*-----------------------------------*/
 
+
 .header .btn {
     display: none;
 }
@@ -352,16 +452,17 @@ body.nav-active {
     top: 0;
     left: 0;
     width: 100%;
-    padding-block: 24px;
-    background-color: var(--bg-oxford-blue-2);
+    padding-block: 18px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.09);
     z-index: 4;
 }
 
 .header.active {
-    padding-block: 8px;
-    box-shadow: var(--shadow-1);
-    border-block-end: 1px solid var(--bg-prussian-blue);
+    padding-block: 18px;
     animation: slideIn 0.5s ease forwards;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.09);
+
 }
 
 @keyframes slideIn {
@@ -377,7 +478,9 @@ body.nav-active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    width: 90%;
+
 }
 
 .nav-open-btn,
@@ -864,7 +967,8 @@ body.nav-active {
     height: 35px;
     display: grid;
     place-items: center;
-    border-radius: var(--radius-circle);
+    border-radius: 20%;
+    border: 1px solid #00;
     transition: var(--transition-1);
 }
 
@@ -1231,7 +1335,7 @@ form {
     align-items: center;
     gap: 3px;
     transition: 0.3s ease;
-    align-items: center;
+    /*align-items: center;*/
     border: 1px solid hsla(199, 89%, 49%, 1);
 
 }
@@ -1296,13 +1400,14 @@ form {
      * REUSED STYLE
      */
     .container {
-        max-width: 540px;
+        /*max-width: 540px;*/
         width: 100%;
         margin-inline: auto;
     }
 
     .headline-3 {
-        --fontSize-2: 2rem;
+        --fontSize-2: 1.8rem;
+        font-family: "Montserrat", sans-serif;
     }
 
 
@@ -1315,7 +1420,7 @@ form {
     }
 
     .header.active {
-        padding-block: 14px;
+        padding-block: 18px;
     }
 
 
@@ -1438,7 +1543,7 @@ form {
      * REUSED STYLE
      */
     .container {
-        max-width: 720px;
+        /*max-width: 720px;*/
     }
 
 
@@ -1466,7 +1571,7 @@ form {
      * REUSED STYLE
      */
     .container {
-        max-width: 930px;
+        /*max-width: 930px;*/
     }
 
 
@@ -1560,7 +1665,7 @@ form {
      * REUSED STYLE
      */
     .container {
-        max-width: 1140px;
+        /*max-width: 940px;*/
     }
 
     body.nav-active {
@@ -1597,7 +1702,7 @@ form {
 
     .navbar-link {
         color: var(--text-wild-blue-yonder);
-        font-weight: unset;
+        font-weight: 600;
     }
 
     .navbar-link:is(:hover, :focus-visible) {
@@ -1649,7 +1754,7 @@ form {
 .container-post-detail {
     max-width: 800px;
     margin: 100px auto 100px auto;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
 .post-header {
@@ -1659,11 +1764,13 @@ form {
 
 .post-title {
     font-size: 2em;
-    background-image: var(--gradient-1);
+    color: #0e0e0e;
     display: inline-block;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+
 }
 
 .post-image img {
@@ -1695,22 +1802,59 @@ form {
 .post-body {
     line-height: 1.6;
     font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.4px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #191818;
 
 }
 
+.post-body u {
+    text-decoration: underline;
+    text-decoration-color: #0bd1d1; /* Ваш обраний колір */
+    text-decoration-style: solid; /* Ви можете змінити стиль на dotted, dashed тощо */
+    color: inherit; /* Забезпечує, що колір тексту залишається незмінним */
+}
+
+.post-body p {
+    margin: 20px 0;
+}
+
+.post-body ul {
+    list-style: none; /* Видалення стандартних маркерів */
+    padding-left: 10px; /* Видалення відступу зліва */
+}
+
+.post-body li {
+    position: relative; /* Дозволяє абсолютне позиціонування для псевдоелементів */
+    padding: 0 0 0 25px; /* Відступ для тексту, щоб не нашаровуватись на маркер */
+    line-height: 1.5; /* Відстань між рядками */
+    margin: 18px 0;
+}
+
+.post-body li:before {
+    content: ''; /* Потрібно для створення маркера */
+    position: absolute;
+    left: 0; /* Позиція маркера зліва */
+    top: 12px; /* Вирівнювання маркера по вертикалі */
+    transform: translateY(-50%); /* Центрування маркера відносно висоти рядка */
+    height: 8px; /* Розмір маркера */
+    width: 8px; /* Розмір маркера */
+    background-color: #FF0000; /* Колір маркера */
+    border-radius: 50%; /* Кругла форма маркера */
+}
+
+
 .post-short_description {
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.4px;
-    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    margin-bottom: 20px;
     position: relative;
     padding-left: 20px;
     margin-top: 20px;
     /*color: #d1d5db;*/
-    color: #b0b2c3;
-    line-height: 1.6;
+    color: #101010;
+    line-height: 1.4;
 }
 
 .post-short_description::before {
@@ -1720,20 +1864,19 @@ form {
     top: 0;
     bottom: 0;
     width: 3px; /* Ширина лінії */
-    background-color: #40c3f7; /* Колір лінії */
+    background-color: #00bd91; /* Колір лінії */
 }
 
 .post-footer {
-    margin: 40px 0 40px 0;
-    border-bottom: 1px solid #374151;
-    padding: 20px 0 20px 0;
+    margin: 20px 0 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 10px;
 }
 
 .tag {
-    background-color: var(--bg-prussian-blue);
+    /*background-color: var(--bg-prussian-blue);*/
     max-width: max-content;
     color: var(--text-white);
     font-size: var(--fontSize-8);
@@ -1747,6 +1890,18 @@ form {
     transform: translateY(-2px);
     background-color: var(--bg-carolina-blue);
 }
+
+.tag-red {
+    background-color: var(--bg-prussian-blue);
+    max-width: max-content;
+    color: var(--text-white);
+    font-size: var(--fontSize-8);
+    font-weight: var(--weight-bold);
+    padding: 4px 15px;
+    border-radius: var(--radius-pill);
+    transition: var(--transition-1);
+}
+
 
 /* --------------- Comments --------------- */
 
@@ -1775,7 +1930,7 @@ form {
 }
 
 .comment-form {
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .comment-form h3 {
@@ -1828,9 +1983,9 @@ form {
 
 
 .nav-bar-container a:first-child {
-    border: 1px solid #0bd1d1;
+    /*border: 1px solid #0bd1d1;*/
     color: #fff;
-    background: transparent;
+    background-color: #00bd91;
 }
 
 .nav-bar-container a:first-child:hover {
@@ -1846,6 +2001,35 @@ form {
     flex-direction: row;
 }
 
+/* -------------------- Responsive Img ---------------------- */
+
+.img-responsive {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin-left: auto; /* Центрує зображення горизонтально */
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+
+/* -------------------------------------------------------------- */
+
+/* ------------------------ ADS ----------------------------------*/
+
+.img-responsive-ads {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-left: auto; /* Центрує зображення горизонтально */
+    margin-right: auto;
+    margin: 30px 0 30px 0;
+    border: 16px;
+"
+}
+
+/* ----------------------------------------------------------- */
 
 /* -------------------- Post List -------------------------------*/
 
@@ -1861,6 +2045,13 @@ form {
     gap: 30px;
 }
 
+@media (min-width: 1600px) {
+    .feature-list-post-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 .feature-list-post-list li {
     flex: 1 1 calc(50% - 15px); /* Два елементи в рядку з урахуванням проміжку */
     box-sizing: border-box;
@@ -1869,11 +2060,16 @@ form {
 @media (max-width: 768px) {
     .feature-list-post-list li {
         flex: 1 1 100%; /* На малих екранах елементи займають всю ширину */
+
+    }
+
+    .feature-list-post-list {
+        gap: 15px;
     }
 }
 
 .feature-card-post-list {
-    padding: 16px 16px 5px 16px;
+    padding: 10px 10px 15px 10px;
     border-radius: var(--radius-16);
     transition: var(--transition-1);
     display: flex;
@@ -1885,7 +2081,7 @@ form {
 .feature-card-post-list .card-content-post-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     flex-grow: 1; /* Allow the content to grow and fill the available space */
 }
 
@@ -1903,7 +2099,7 @@ form {
 
 .feature-card-post-list:is(:hover, :focus-visible) {
     box-shadow: var(--shadow-2);
-    background-image: linear-gradient(var(--bg-oxford-blue), var(--bg-oxford-blue)), var(--gradient-1);
+    /*background-image: linear-gradient(var(--bg-oxford-blue), var(--bg-oxford-blue)), var(--gradient-1);*/
     background-clip: padding-box, border-box;
     border-color: transparent;
     transform: translateY(-2px);
@@ -1943,6 +2139,47 @@ form {
     margin-block-start: 30px;
 }
 
+.bg-white {
+    border-radius: var(--radius-16);
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+}
+
+@media (max-width: 1175px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: 0.5fr 2fr;
+        color: #000;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .menu-container div:not(:first-child) {
+    margin-top: 24px;
+}
+
+    .right-ads {
+        display: none;
+    }
+}
+
+@media (max-width: 950px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: 2fr;
+        color: #000;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .menu-container {
+        display: none;
+    }
+
+    .right-ads {
+        display: none;
+    }
+}
 
 
 @media (max-width: 800px) {
@@ -1950,7 +2187,30 @@ form {
         margin: 20% auto;
     }
 
+    .img-responsive {
+        width: 100%;
+    }
+
+    .img-responsive-ads {
+        margin: 20px 0;
+    }
+
+    .main-container {
+        margin: 0 20px;
+    }
 }
+
+@media (max-width: 575px) {
+    .margin-feature {
+        margin-top: 60px;
+    }
+
+    .header.active {
+    padding-block: 12px;
+
+}
+}
+
 
 @media (max-width: 500px) {
     .modal-content {
@@ -1963,12 +2223,20 @@ form {
 
     .container-post-detail {
         margin: 70px auto 100px auto;
-        padding: 20px;
     }
 
     .card-title {
         font-size: 15px;
     }
+
+    .feature-card-post-list {
+        padding: 7px 7px 12px 7px;;
+    }
+
+    .post-title {
+        font-size: 1.6em;
+    }
+
 
 }
 
@@ -1977,67 +2245,92 @@ form {
         display: none;
     }
 
+
     .post-meta {
         justify-content: space-between;
+        font-size: 1.2rem;
+        gap: 2rem;
+
+    }
+
+    .post-title {
+        font-size: 1.8rem;
     }
 }
 
 /*------------ SEarch box  ----------------------------*/
-.search-box{
-  width: fit-content;
-  height: fit-content;
-  position: relative;
+.search-box {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
 }
-.input-search{
-  height: 40px;
-  width: 40px;
-  border-style: none;
-  padding: 10px;
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  outline: none;
-  border-radius: 25px;
-  transition: all .5s ease-in-out;
-  background-color: #22a6b3;
-  padding-right: 40px;
-  color:#fff;
+
+.input-search {
+    height: 40px;
+    width: 40px;
+    border-style: none;
+    padding: 10px;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #22a6b3;
+    padding-right: 40px;
+    color: #fff;
 }
-.input-search::placeholder{
-  color:rgba(255,255,255,.5);
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-  font-weight: 100;
+
+.input-search::placeholder {
+    color: rgba(255, 255, 255, .5);
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: 100;
 }
-.btn-search{
-  width: 50px;
-  height: 50px;
-  border-style: none;
-  font-size: 1.6rem;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  position: absolute;
-  right: 0px;
-  color:#ffffff ;
-  background-color:transparent;
-  pointer-events: painted;
+
+.btn-search {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: #ffffff;
+    background-color: transparent;
+    pointer-events: painted;
 }
-.btn-search:focus ~ .input-search{
-  width: 250px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+
+.btn-search:focus ~ .input-search {
+    width: 250px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
-.input-search:focus{
-  width: 300px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+
+.input-search:focus {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 
 /*-----------------------------------------------------------*/
+
+.section-title-first {
+    margin-top: 50px;
+}
+
+
+/* ------------------------   Marker List ----------------------------*/
+
+
+/* -------------------------------------------------------------- */
+
+
 
 

@@ -24,6 +24,7 @@ def home(request):
 
 
 def post_list(request, category_id=None, tag_slug=None):
+    featured_post = Post.objects.filter(is_featured=True)[:1]
     post_list = Post.published.all()
     recent_post = Post.published.all()[:3]
     category = None
@@ -46,6 +47,7 @@ def post_list(request, category_id=None, tag_slug=None):
         paged_posts = paginator.page(paginator.num_pages)
 
     context = {
+        'featured_post': featured_post,
         'paged_posts': paged_posts,
         'tag': tag,
         'category': category,
@@ -133,6 +135,7 @@ def post_share(request, pk):
         'sent': sent,
     }
     return render(request=request, template_name='blog/post/post_share.html', context=context)
+
 
 
 

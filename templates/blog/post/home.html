@@ -14,46 +14,46 @@
               - #HERO
             -->
 
-            <section class="hero" id="home" aria-label="home">
-                <div class="container">
-                    <div class="hero-content">
-
+{#            <section class="hero" id="home" aria-label="home">#}
+{#                <div class="container">#}
+{#                    <div class="hero-content">#}
+{##}
                         {#                        <p class="hero-subtitle">Hello Everyone!</p>#}
-
-                        <h1 class="headline headline-1 section-title">
-                            I’m <span class="span">Wren Clark</span>
-                        </h1>
-
-
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" class="input-search" placeholder="Type to Search...">
-                            </div>
-
-
-                    </div>
-
-                    <div class="hero-banner">
-
-                        <img src="{% static 'images/3.png' %}" width="327" height="490" alt="Wren Clark"
-                             class="w-100">
-
-                        <img src="{% static 'images/pattern-2.svg' %}" width="27" height="26" alt="shape"
-                             class="shape shape-1">
-
-                        <img src="{% static 'images/pattern-3.svg' %}" width="27" height="26" alt="shape"
-                             class="shape shape-2">
-
-                    </div>
-
-                    <img src="{% static 'images/shadow-1.svg' %}" width="500" height="800" alt=""
-                         class="hero-bg hero-bg-1">
-
-                    <img src="{% static 'images/shadow-2.svg' %}" width="500" height="500" alt=""
-                         class="hero-bg hero-bg-2">
-
-                </div>
-            </section>
+{##}
+{#                        <h1 class="headline headline-1 section-title">#}
+{#                            I’m <span class="span">Wren Clark</span>#}
+{#                        </h1>#}
+{##}
+{##}
+{#                            <div class="search-box">#}
+{#                                <button class="btn-search"><i class="fas fa-search"></i></button>#}
+{#                                <input type="text" class="input-search" placeholder="Type to Search...">#}
+{#                            </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                    <div class="hero-banner">#}
+{##}
+{#                        <img src="{% static 'images/3.png' %}" width="327" height="490" alt="Wren Clark"#}
+{#                             class="w-100">#}
+{##}
+{#                        <img src="{% static 'images/pattern-2.svg' %}" width="27" height="26" alt="shape"#}
+{#                             class="shape shape-1">#}
+{##}
+{#                        <img src="{% static 'images/pattern-3.svg' %}" width="27" height="26" alt="shape"#}
+{#                             class="shape shape-2">#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <img src="{% static 'images/shadow-1.svg' %}" width="500" height="800" alt=""#}
+{#                         class="hero-bg hero-bg-1">#}
+{##}
+{#                    <img src="{% static 'images/shadow-2.svg' %}" width="500" height="500" alt=""#}
+{#                         class="hero-bg hero-bg-2">#}
+{##}
+{#                </div>#}
+{#            </section>#}
 
 
             <!-- 
@@ -126,7 +126,7 @@
             <section class="section feature" aria-label="feature" id="featured">
                 <div class="container">
 
-                    <h2 class="headline headline-2 section-title">
+                    <h2 class="headline headline-2 section-title section-title-first">
                         <span class="span">Найпопулярніші пости</span>
                     </h2>
 
@@ -148,9 +148,9 @@
                             <li>
                                 <div class="card feature-card-post-list">
                                     <figure class="card-banner-post-list img-holder"
-                                            style="--width: 1602; --height: 903;">
+                                            style="--width: 1402; --height: 703;">
                                         <a href="{{ post.get_absolute_url }}" class="img-cover">
-                                            <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
+                                            <img src="{{ post.image.url }}" width="1402" height="903" loading="lazy"
                                                  alt="Self-observation is the first step of inner unfolding"
                                                  class="img-cover">
                                         </a>
@@ -171,27 +171,27 @@
                                             <a href="{{ post.get_absolute_url }}"
                                                class="card-title hover-2">{{ post.title }}</a>
                                         </h3>
-                                        <div class="card-wrapper">
-                                            <div class="profile-card-post-list">
-                                                <div>
-                                                    <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="card-tag-post-list">
-                                                {% for tag in post.tags.all %}
-
-                                                    <div>
-                                                        <a href="{% url "blog:post_list_by_tag" tag.slug %}"
-                                                           class="span hover-2">
-                                                            #{{ tag.name }}
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-
-                                            </div>
-
-                                        </div>
+{#                                        <div class="card-wrapper">#}
+{#                                            <div class="profile-card-post-list">#}
+{#                                                <div>#}
+{#                                                    <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{#                                            <div class="card-tag-post-list">#}
+{#                                                {% for tag in post.tags.all %}#}
+{##}
+{#                                                    <div>#}
+{#                                                        <a href="{% url "blog:post_list_by_tag" tag.slug %}"#}
+{#                                                           class="span hover-2">#}
+{#                                                            #{{ tag.name }}#}
+{#                                                        </a>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{##}
+{#                                            </div>#}
+{##}
+{#                                        </div>#}
                                     </div>
                                 </div>
                             </li>
