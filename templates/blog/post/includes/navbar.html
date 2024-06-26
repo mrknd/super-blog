@@ -10,7 +10,7 @@
         <nav class="navbar" data-navbar>
 
             <div class="navbar-top">
-                <a href="/" class="logo">
+                <a href="{% url 'blog:post_list' %}" class="logo">
                     <img src="{% static 'images/logo.svg' %}" width="119" height="37" alt="Wren logo">
                 </a>
 
@@ -22,23 +22,23 @@
             <ul class="navbar-list">
 
                 <li>
-                    <a href="/" class="navbar-link hover-1" data-nav-toggler>Головна</a>
+                    <a href="/" class="navbar-link hover-1" data-nav-toggler><span class="sm-line">Головна</span></a>
                 </li>
 
                 <li>
-                    <a href="{% url 'blog:post_list' %}" class="navbar-link hover-1" data-nav-toggler>AI Блог</a>
+                    <a href="{% url 'blog:post_list' %}" class="navbar-link hover-1" data-nav-toggler><span class="sm-line">AI Блог</span></a>
                 </li>
 
                 <li>
-                    <a href="#featured" class="navbar-link hover-1" data-nav-toggler>Популярне</a>
+                    <a href="#featured" class="navbar-link hover-1" data-nav-toggler><span class="sm-line">Популярне</span></a>
                 </li>
 
                 <li>
-                    <a href="#recent" class="navbar-link hover-1" data-nav-toggler>Recent Post</a>
+                    <a href="#recent" class="navbar-link hover-1" data-nav-toggler><span class="sm-line">Recent Post</span></a>
                 </li>
 
                 <li>
-                    <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
+                    <a href="#" class="navbar-link hover-1" data-nav-toggler><span class="sm-line">Contact</span></a>
                 </li>
 
 

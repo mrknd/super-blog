@@ -69,7 +69,7 @@ def post_detail(request, slug=None):
     # Список схожих постів
     post_tags_ids = single_post.tags.values_list('pk', flat=True)
     similar_posts = Post.objects.filter(tags__in=post_tags_ids).exclude(pk=single_post.pk)
-    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('same_tags', 'publish')[:2]
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('same_tags', 'publish')[:3]
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -85,6 +85,7 @@ def post_detail(request, slug=None):
     # Comments
     comments = Comment.objects.filter(post=single_post)
     comment_count = comments.count()
+    recent_post = Post.published.exclude(id=single_post.id).order_by('-publish')[:3]
 
     context = {
         'single_post': single_post,
@@ -93,6 +94,7 @@ def post_detail(request, slug=None):
         'comments': comments,
         # 'form': form,
         'similar_posts': similar_posts,
+        'recent_post': recent_post,
     }
     return render(request=request, template_name='blog/post/post_detail.html', context=context)
 

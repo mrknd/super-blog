@@ -7,39 +7,20 @@
 
     <section class="section feature-post-list" aria-label="feature" id="featured">
         <div class="main-container">
-            <div class="menu-container">
-                <div>
-                    <h3 class="menu-header">Категорії</h3>
-                    <ul class="menu">
-                        <li><a href="#"><span class="sm-line">Кейси</span></a></li>
-                        <li><a href="#"><span class="sm-line">Інтерв'ю</span></a></li>
-                        <li><a href="#"><span class="sm-line">Статті</span></a></li>
-                        <li><a href="#"><span class="sm-line">Новини</span></a></li>
-                        <li><a href="#"><span class="sm-line">Блоги</span></a></li>
-                    </ul>
-                </div>
-                <div>
-                    <a href=""><h3 class="menu-header">Біржі</h3></a>
-                </div>
-                <div>
-                  <h3 class="menu-header ">Категорії</h3>
-                    <ul class="menu">
-                        <li><a href="#"><span class="sm-line">Кейси</span></a></li>
-                        <li><a href="#"><span class="sm-line">Інтерв'ю</span></a></li>
-                        <li><a href="#"><span class="sm-line">Статті</span></a></li>
-                        <li><a href="#"><span class="sm-line">Новини</span></a></li>
-                        <li><a href="#"><span class="sm-line">Блоги</span></a></li>
-                    </ul>
-                </div>
+            <div>
+                {% include 'blog/post/includes/left-menu.html' %}
             </div>
-
             <div class="container">
-                {#            <h2 class="headline headline-2 section-title" style="margin-top: 40px;">#}
-                {#                <span class="span">AI Блог</span>#}
-                {#            </h2>#}
-                {#            <p class="section-text">#}
-                {#                Не пропустіть останні тенденції#}
-                {#            </p>#}
+                <div class="carousel margin-feature">
+                    <div class="carousel-slides" id="carouselSlides">
+                        <!-- Зображення каруселі -->
+                        <img class="carousel-slide" src="{% static 'gifs/Frame-39652178.png.jpg' %}"
+                             alt="Опис першого зображення">
+                        <img class="carousel-slide" src="{% static 'gifs/Frame-39652178.png.jpg' %}"
+                             alt="Опис другого зображення">
+                    </div>
+                </div>
+
                 {% include 'blog/post/includes/modal_login.html' %}
                 {% include 'blog/post/includes/modal_register.html' %}
 
@@ -54,9 +35,13 @@
                             <div class="card feature-card-post-list">
                                 <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 703;">
                                     <a href="{{ post.get_absolute_url }}" class="img-cover">
-                                        <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
-                                             alt="Self-observation is the first step of inner unfolding"
-                                             class="img-cover">
+                                        <img src="{{ post.image.url }}" width="1402" height="703" loading="lazy"
+                                             alt="{{ post.title }}" class="img-cover">
+                                        <div class="overlay">
+                                            <div class="overlay-content">
+                                                <p>{{ post.short_description | truncatewords:25 }}</p>
+                                            </div>
+                                        </div>
                                     </a>
                                 </figure>
                                 <div class="card-content-post-list">
@@ -65,46 +50,26 @@
                                              style="background-color: {{ post.category.category_color }};">
                                             <a href="{% url 'blog:post_list_by_category' post.category.id %}">{{ post.category }}</a>
                                         </div>
-
                                         <div class="wrapper">
                                             <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
                                             <span class="span">{{ post.calculate_reading_time }} хв.</span>
                                         </div>
                                     </div>
-                                    <h3 class="headline headline-3">
+                                    <h3 class="headline headline-3" >
                                         <a href="{{ post.get_absolute_url }}"
                                            class="card-title hover-2">{{ post.title }}</a>
                                     </h3>
-                                    {#                                <div class="card-wrapper">#}
-                                    {#                                    <div class="profile-card-post-list">#}
-                                    {#                                        <div>#}
-                                    {#                                            <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
-                                    {##}
-                                    {#                                    <div class="card-tag-post-list">#}
-                                    {#                                        {% for tag in post.tags.all %}#}
-                                    {##}
-                                    {#                                            <div>#}
-                                    {#                                                <a href="{% url "blog:post_list_by_tag" tag.slug %}"#}
-                                    {#                                                   class="span hover-2">#}
-                                    {#                                                    #{{ tag.name }}#}
-                                    {#                                                </a>#}
-                                    {#                                            </div>#}
-                                    {#                                        {% endfor %}#}
-                                    {##}
-                                    {#                                    </div>#}
-                                    {##}
-                                    {#                                </div>#}
                                 </div>
                             </div>
                         </li>
+
                     {% endfor %}
                 </ul>
                 {% include 'blog/pagination.html' with page=posts %}
             </div>
-            <div class="right-ads" >
-                <a href=""><img src="{% static 'gifs/1a4acb72962375.5bf998731ce06.jpg' %}" alt="" style="max-width: 250px;"></a>
+            <div class="right-ads">
+                <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
+                                style="max-width: 250px;"></a>
             </div>
         </div>
     </section>

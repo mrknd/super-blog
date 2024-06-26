@@ -1,6 +1,6 @@
 {% for post in featured_post %}
     <li >
-        <div class="card feature-card-post-list margin-feature">
+        <div class="card feature-card-post-list">
             <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 303;">
                 <a href="{{ post.get_absolute_url }}" class="img-cover">
                     <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
@@ -18,7 +18,7 @@
                         <span class="span">{{ post.calculate_reading_time }} хв.</span>
                     </div>
                 </div>
-                <h3 class="headline headline-3">
+                <h3 class="headline headline-3" style="font-size: 20px;">
                     <a href="{{ post.get_absolute_url }}"
                        class="card-title hover-2">{{ post.title }}</a>
                 </h3>

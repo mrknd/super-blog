@@ -1,5 +1,7 @@
 {% load static %}
 
-<div  >
-    <img class="img-responsive-ads" src="{% static 'gifs/Sequence-10_13.gif' %}" alt="">
+<div>
+    <img class="img-responsive-ads" src="{% static 'gifs/Sequence-10_13.gif' %}" alt="" {% if paged_posts.number > 1 %}
+                    style="margin-top: 0;"
+                {% endif %}>
 </div>

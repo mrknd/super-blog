@@ -5,15 +5,15 @@ from .models import Post, Category, Comment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'author', 'publish', 'status']
+    list_display = ['id', 'title', 'author', 'updated_at', 'status']
     list_display_links = ['id', 'title', 'author']
-    list_filter = ['status', 'created_at', 'publish', 'author']
+    list_filter = ['status', 'updated_at', 'publish', 'author']
 
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'body']
     # raw_id_fields = ['author']
     date_hierarchy = 'publish'
-    ordering = ['status', '-publish']
+    ordering = ['-updated_at', 'status', '-publish']
     show_facets = admin.ShowFacets.ALWAYS
 
 

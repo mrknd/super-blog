@@ -1,0 +1,51 @@
+{% load static %}
+
+<div class="menu-container">
+    <div>
+        <h3 class="menu-header">Категорії</h3>
+        {#        <ul class="menu">#}
+        {#            <li><a href="#"><span class="sm-line">Кейси</span></a></li>#}
+        {#            <li><a href="#"><span class="sm-line">Інтерв'ю</span></a></li>#}
+        {#            <li><a href="#"><span class="sm-line">Статті</span></a></li>#}
+        {#            <li><a href="#"><span class="sm-line">Новини</span></a></li>#}
+        {#            <li><a href="#"><span class="sm-line">Блоги</span></a></li>#}
+        {#        </ul>#}
+        <ul class="menu">
+            {% for category in categories %}
+                <li><a href="#"><span class="sm-line">{{ category }}</span></a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    <div>
+        <a href=""><h3 class="menu-header">Біржі</h3></a>
+    </div>
+    <div>
+        <h3 class="menu-header ">Теги</h3>
+        <ul class="menu">
+            <li><a href="#"><span class="sm-line">Bitcoin</span></a></li>
+            <li><a href="#"><span class="sm-line">Ethereum</span></a></li>
+            <li><a href="#"><span class="sm-line">Altcoins</span></a></li>
+            <li><a href="#"><span class="sm-line">NFT's</span></a></li>
+            <li><a href="#"><span class="sm-line">Блокчейн</span></a></li>
+        </ul>
+    </div>
+    <div class="flex-social-icons">
+        <a href="" class="" target="_blank"><img
+                src="{% static 'icons/instagram-icon.png' %}"
+                alt="" style="width: 40px"></a>
+        <a href="" class="" target="_blank"><img
+                src="{% static 'icons/telegram-icon.png' %}"
+                alt="" style="width: 40px"></a>
+
+        <a href="" class="" target="_blank"><img
+                src="{% static 'icons/discord-icon.png' %}"
+                alt="" style="width: 40px"></a>
+        <a href="" class="" target="_blank"><img
+                src="{% static 'icons/tiktok-icon.png' %}"
+                alt="" style="width: 40px"></a>
+        <a href="" class="" target="_blank"><img
+                src="{% static 'icons/linkedin-icon.png' %}"
+                alt="" style="width: 40px"></a>
+    </div>
+</div>
