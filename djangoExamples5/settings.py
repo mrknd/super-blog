@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=p5_)(z_%4ewg6t!hw8s0px_*0hrak6p!(q!9imx8$h&nhq)b4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoExamples5.urls'
@@ -88,15 +89,17 @@ WSGI_APPLICATION = 'djangoExamples5.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog_db',
-        'USER': 'postgres',
-        'PASSWORD': '148898',
-        'HOST': 'localhost',
-    }
-}
+# DATABASES = {
+# #     'default': {
+# #         'ENGINE': 'django.db.backends.postgresql',
+# #         'NAME': 'blog_db',
+# #         'USER': 'postgres',
+# #         'PASSWORD': '148898',
+# #         'HOST': 'localhost',
+# #     }
+# # }
+
+DATABASE = {'default': dj_database_url.config(default='postgres://postgres:148898@localhost/blog_db')}
 
 
 # Password validation
@@ -180,3 +183,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'vatikan98@gmail.com'
 EMAIL_HOST_PASSWORD = 'byro zcxk hqmb vlyc'
 EMAIL_USE_TLS = True
+
+
+
+# Whitenoise settings
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
