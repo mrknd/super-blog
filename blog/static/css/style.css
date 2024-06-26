@@ -1883,6 +1883,7 @@ form {
 
 .post-body p {
     margin: 20px 0;
+    font-family: "Roboto Light", Sans-Serif;
 }
 
 .post-body ul {
@@ -1952,7 +1953,7 @@ form {
     letter-spacing: 0.2px;
     margin-bottom: 20px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 15px;
     margin-top: 20px;
     /*color: #d1d5db;*/
     color: #101010;
@@ -1970,7 +1971,7 @@ form {
 }
 
 .post-footer {
-    margin: 40px 0 0 20px;
+    margin: 40px 0 0 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
