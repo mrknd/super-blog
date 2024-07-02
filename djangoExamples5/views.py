@@ -45,6 +45,8 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username, password=password)
+        messages.success(request, f'Вітаємо в банді {username}')
+
         if user is not None:
             auth.login(request, user)
             return redirect('home')
@@ -52,9 +54,10 @@ def login(request):
             messages.error(request, 'Неправильний логін або пароль')
             return redirect(request.META.get('HTTP_REFERER', 'home'))
 
-    return render(request=request, template_name='blog/post/home.html')
+    return render(request=request, template_name='blog/post/login.html')
 
 
 def logout(request):
     auth.logout(request)
+    messages.success(request, f'Скоро побачимось')
     return redirect('home')

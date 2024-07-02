@@ -5,8 +5,8 @@ from .models import Post, Category, Comment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'author', 'updated_at', 'status']
-    list_display_links = ['id', 'title', 'author']
+    list_display = ['title', 'author', 'category', 'updated_at', 'status']
+    list_display_links = ['title', 'author']
     list_filter = ['status', 'updated_at', 'publish', 'author']
 
     prepopulated_fields = {'slug': ('title',)}

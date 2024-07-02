@@ -13,17 +13,7 @@ from .models import Post, Category, Comment
 from .forms import EmailPostForm, CommentForm
 
 
-def home(request):
-    recent_posts = Post.published.all()[:3]
-    featured_post = Post.objects.filter(is_featured=True)[:5]
-    context = {
-        'recent_posts': recent_posts,
-        'featured_post': featured_post,
-    }
-    return render(request=request, template_name='blog/post/home.html', context=context)
-
-
-def post_list(request, category_id=None, tag_slug=None):
+def home(request, category_id=None, tag_slug=None):
     featured_post = Post.objects.filter(is_featured=True)[:1]
     post_list = Post.published.all()
     recent_post = Post.published.all()[:3]
@@ -37,7 +27,7 @@ def post_list(request, category_id=None, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         post_list = post_list.filter(tags__in=[tag])
 
-    paginator = Paginator(post_list, 6)
+    paginator = Paginator(post_list, 20)
     page_number = request.GET.get('page', 1)
     try:
         paged_posts = paginator.page(page_number)
@@ -54,6 +44,60 @@ def post_list(request, category_id=None, tag_slug=None):
         'recent_post': recent_post,
     }
     return render(request=request, template_name='blog/post/post_list.html', context=context)
+
+
+def post_list(request, category_id=None, tag_slug=None):
+    featured_post = Post.objects.filter(is_featured=True)[:1]
+    post_list = Post.published.all()
+    recent_post = Post.published.all()[:3]
+    category = None
+    tag = None
+    if category_id:
+        category = get_object_or_404(Category, pk=category_id)
+        post_list = post_list.filter(category=category)
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        post_list = post_list.filter(tags__in=[tag])
+
+    paginator = Paginator(post_list, 20)
+    page_number = request.GET.get('page', 1)
+    try:
+        paged_posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        paged_posts = paginator.page(1)
+    except EmptyPage:
+        paged_posts = paginator.page(paginator.num_pages)
+
+    context = {
+        'featured_post': featured_post,
+        'paged_posts': paged_posts,
+        'tag': tag,
+        'category': category,
+        'recent_post': recent_post,
+    }
+    return render(request=request, template_name='blog/post/post_list.html', context=context)
+
+
+def post_list_by_category(request, category_id):
+    posts = Post.published.filter(category=category_id)
+    category = get_object_or_404(Category, pk=category_id)
+    context = {
+        'posts': posts,
+        'category': category,
+    }
+    return render(request=request, template_name='blog/post/post_list_by_category.html', context=context)
+
+
+def post_list_by_tag(request, tag_slug=None):
+    posts = Post.published.all()
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    posts = posts.filter(tags__in=[tag])
+    context = {
+        'posts': posts,
+        'tag': tag,
+    }
+    return render(request=request, template_name='blog/post/post_list_by_tag.html', context=context)
 
 
 def post_detail(request, slug=None):

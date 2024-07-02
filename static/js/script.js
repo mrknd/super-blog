@@ -109,62 +109,78 @@ window.addEventListener("resize", function () {
 });
 
 // Messages html -------------------
-// setTimeout(function(){
-//     $('#message').fadeOut('slow')
-// }, 4000)
 
-// -------------------------------------- Modal Window ------------------------------------------------
-// Отримати модальні вікна
-var loginModal = document.getElementById("loginModal");
-var registerModal = document.getElementById("registerModal");
 
-// Отримати кнопки, які відкривають модальні вікна
-var loginBtn = document.getElementById("loginBtn");
-var registerBtn = document.getElementById("registerBtn");
+// // -------------------------------------- Modal Window ------------------------------------------------
+// // Отримати модальні вікна
+// var loginModal = document.getElementById("loginModal");
+// var registerModal = document.getElementById("registerModal");
+//
+// // Отримати кнопки, які відкривають модальні вікна
+// var loginBtn = document.getElementById("loginBtn");
+// var registerBtn = document.getElementById("registerBtn");
+//
+// // Отримати елементи <span>, які закривають модальні вікна
+// var closeButtons = document.getElementsByClassName("close");
+//
+// // Коли користувач натискає на кнопку Вхід, відкрити відповідне модальне вікно
+// loginBtn.onclick = function () {
+//     loginModal.style.display = "block";
+// }
+//
+// // Коли користувач натискає на кнопку Реєстрація, відкрити відповідне модальне вікно
+// registerBtn.onclick = function () {
+//     registerModal.style.display = "block";
+// }
+//
+// // Коли користувач натискає на <span> (x), закрити відповідне модальне вікно
+// for (var i = 0; i < closeButtons.length; i++) {
+//     closeButtons[i].onclick = function () {
+//         loginModal.style.display = "none";
+//         registerModal.style.display = "none";
+//     }
+// }
+//
+// // Коли користувач натискає в будь-якому місці за межами модального вікна, закрити його
+// window.onclick = function (event) {
+//     if (event.target == loginModal) {
+//         loginModal.style.display = "none";
+//     }
+//     if (event.target == registerModal) {
+//         registerModal.style.display = "none";
+//     }
+// }
+//
+// // Carousel ------------------------------
+// let currentSlide = 0;
+// const slides = document.querySelectorAll('.carousel-slide');
+// const totalSlides = slides.length;
 
-// Отримати елементи <span>, які закривають модальні вікна
-var closeButtons = document.getElementsByClassName("close");
+// function nextSlide() {
+//     currentSlide = (currentSlide + 1) % totalSlides;
+//     const newSlidePosition = -currentSlide * 100; // This moves the slide
+//     document.getElementById('carouselSlides').style.transform = `translateX(${newSlidePosition}%)`;
+// }
+//
+// // Change slide every 5 seconds
+// setInterval(nextSlide, 5000);
 
-// Коли користувач натискає на кнопку Вхід, відкрити відповідне модальне вікно
-loginBtn.onclick = function () {
-    loginModal.style.display = "block";
+
+// -------------Message ---------------------------------
+window.onload = function () {
+    setTimeout(function () {
+        var messagesContainer = document.getElementById('messages-container');
+        if (messagesContainer) {
+            messagesContainer.style.opacity = '0'; // Початок зникнення
+            setTimeout(function () {
+                messagesContainer.style.display = 'none'; // Повністю прибрати елемент після зникнення
+            }, 500); // Час для завершення анімації
+        }
+    }, 2000); // Час показу повідомлення перед початком зникнення
 }
 
-// Коли користувач натискає на кнопку Реєстрація, відкрити відповідне модальне вікно
-registerBtn.onclick = function () {
-    registerModal.style.display = "block";
-}
 
-// Коли користувач натискає на <span> (x), закрити відповідне модальне вікно
-for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].onclick = function () {
-        loginModal.style.display = "none";
-        registerModal.style.display = "none";
-    }
-}
 
-// Коли користувач натискає в будь-якому місці за межами модального вікна, закрити його
-window.onclick = function (event) {
-    if (event.target == loginModal) {
-        loginModal.style.display = "none";
-    }
-    if (event.target == registerModal) {
-        registerModal.style.display = "none";
-    }
-}
 
-// Carousel ------------------------------
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const totalSlides = slides.length;
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    const newSlidePosition = -currentSlide * 100; // This moves the slide
-    document.getElementById('carouselSlides').style.transform = `translateX(${newSlidePosition}%)`;
-}
-
-// Change slide every 5 seconds
-setInterval(nextSlide, 5000);
 
 

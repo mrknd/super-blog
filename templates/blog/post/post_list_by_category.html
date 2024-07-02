@@ -1,76 +1,75 @@
 {% extends 'blog/base.html' %}
 
+{% load blog_tags %}
+{% load static %}
+
 {% block content %}
 
-    <section class="section recent-post" id="recent" aria-labelledby="recent-label">
-        <div class="container">
+    <section class="section feature-post-list" aria-label="feature" id="featured">
+        <div class="main-container">
+            <div>
+                {% include 'blog/post/includes/left-menu.html' %}
+            </div>
+            <div class="container">
+                <h2 class="category_title">Категорія / <span class="category_title_category-name" 
+                                                             style="background-color: {{ category.category_color }};">{{ category }}</span></h2>
+{##}
+{#                <div class="carousel margin-feature">#}
+{#                    <div class="carousel-slides" id="carouselSlides">#}
+{#                        <!-- Зображення каруселі -->#}
+{#                        <img class="carousel-slide" src="{% static 'gifs/Frame-39652178.png.jpg' %}"#}
+{#                             alt="Опис першого зображення">#}
+{#                    </div>#}
+{#                </div>#}
 
-            <div class="post-main">
 
-                <h2 class="headline headline-2 section-title">
-                        <br>
-                        <a href="#" class="span hover-2">Категорія -  "{{ category }}"</a>
-{#                        <span class="span">Recent posts</span>#}
-
-                </h2>
-
-                <p class="section-text">
-                    Не пропустіть останні тенденції
-                </p>
-
-                <ul class="grid-list">
+{#                {% if paged_posts.number == 1 %}#}
+{#                    {% include 'blog/post/includes/featured_post.html' %}#}
+{#                {% endif %}#}
+                <ul class="feature-list-post-list">
                     {% for post in posts %}
                         <li>
-                            <div class="recent-post-card">
-
-                                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                                    <img src="{{ post.image.url }}" width="271" height="258"
-                                         loading="lazy"
-                                         alt="Helpful Tips for Working from Home as a Freelancer"
-                                         class="img-cover">
-                                </figure>
-
-                                <div class="card-content">
-
-                                    <a href="#" class="card-badge">{{ post.category }}</a>
-
-                                    <h3 class="headline headline-3 card-title">
-                                        <a href="{{ post.get_absolute_url }}"
-                                           class="link hover-2">{{ post.title }}</a>
-                                    </h3>
-
-                                    <p class="card-text">
-                                        {{ post.body | truncatewords:15 }}
-                                    </p>
-
-                                    <div class="card-wrapper">
-                                        <div class="card-tag">
-                                            <a href="#" class="span hover-2"># Travel</a>
-
+                            <div class="card feature-card-post-list">
+                                <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 703;">
+                                    <a href="{{ post.get_absolute_url }}" class="img-cover">
+                                        <img src="{{ post.image.url }}" width="1402" height="703" loading="lazy"
+                                             alt="{{ post.title }}" class="img-cover">
+                                        <div class="overlay">
+                                            <div class="overlay-content">
+                                                <p>{{ post.short_description | truncatewords:16 }}</p>
+                                            </div>
                                         </div>
-
+                                    </a>
+                                </figure>
+                                <div class="card-content-post-list">
+                                    <div class="card-wrapper">
+                                        <div class="card-badge"
+                                             style="background-color: {{ post.category.category_color }};">
+                                            <a href="{% url 'blog:post_list_by_category' post.category.id %}">{{ post.category }}</a>
+                                        </div>
                                         <div class="wrapper">
                                             <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                                            <span class="span">3 mins read</span>
+                                            <span class="span">{{ post.calculate_reading_time }} хв.</span>
                                         </div>
                                     </div>
-
+                                    <h3 class="headline headline-3" >
+                                        <a href="{{ post.get_absolute_url }}"
+                                           class="card-title hover-2">{{ post.title }}</a>
+                                    </h3>
                                 </div>
-
                             </div>
                         </li>
 
                     {% endfor %}
                 </ul>
-
                 {% include 'blog/pagination.html' with page=posts %}
-
-
             </div>
-
-
+            <div class="right-ads">
+                <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
+                                style="max-width: 250px;"></a>
+            </div>
         </div>
     </section>
+
 
 {% endblock %}

@@ -248,7 +248,7 @@ body.nav-active {
 .menu li a {
     text-decoration: none;
     color: black;
-    display: block;
+    display: inline-block;
     padding: 6px 16px;
     position: relative;
 }
@@ -271,7 +271,7 @@ body.nav-active {
     width: 0;
     height: 1.5px;
     background-color: hsl(166, 100%, 37%);
-    transition: width 0.3s ease-in-out;
+    transition: width 0.1s ease-in-out;
 }
 
 .flex-social-icons {
@@ -554,7 +554,9 @@ body.nav-active {
 .navbar .profile-card {
     margin-block-end: 15px;
 }
-
+.card-title {
+    text-transform: none;
+}
 .navbar .profile-card .card-title {
     color: var(--text-columbia-blue);
     font-size: var(--fontSize-6);
@@ -1866,7 +1868,7 @@ form {
 }
 
 .post-body {
-    line-height: 1.4;
+    line-height: 1.5;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.3px;
@@ -1883,7 +1885,6 @@ form {
 
 .post-body p {
     margin: 20px 0;
-    font-family: "Roboto Light", Sans-Serif;
 }
 
 .post-body ul {
@@ -1948,7 +1949,7 @@ form {
 }
 
 .post-short_description {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.2px;
     margin-bottom: 20px;
@@ -1971,7 +1972,7 @@ form {
 }
 
 .post-footer {
-    margin: 40px 0 0 0;
+    margin: 40px 0 0 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -2154,16 +2155,9 @@ form {
 }
 
 .feature-list-post-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-@media (min-width: 1600px) {
-    .feature-list-post-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .feature-list-post-list li {
@@ -2260,6 +2254,21 @@ form {
     border-radius: var(--radius-16);
     box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.07);
     background-color: #fff;
+}
+
+.category_title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 600;
+
+}
+
+.category_title_category-name {
+    display: inline-block;
+    padding: 6px 13px;
+    border-radius: 20px;
+    color: #fff;
+    text-transform: capitalize;
 }
 
 @media (max-width: 1175px) {
@@ -2550,5 +2559,125 @@ form {
     align-items: center;
 }
 
+/* --------- Message Window -------------------*/
+#messages-container {
+    /*position: fixed;*/
+    /*top: 20px;*/
+    /*right: 20px;*/
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Плавне змінення прозорості */
+}
 
+.alert-success {
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #00bd91;
+    border-color: #f5c6cb;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
+.alert-error {
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #bd0048;
+    border-color: #f5c6cb;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.alert-danger {
+    color: #ffffff;
+}
+
+/* ------------------------ Login Form --------------------------- */
+.container-login {
+    margin: auto;
+    max-width: 500px;
+    width: 100%;
+    border-radius: var(--radius-16);
+}
+
+.container-login .registration {
+    display: none;
+}
+
+#check:checked ~ .registration {
+    display: block;
+}
+
+#check:checked ~ .login {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.container-login .form {
+    padding: 2rem;
+}
+
+.form header {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4.5rem;
+}
+
+.form input {
+    height: 60px;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 17px;
+    margin-bottom: 1.3rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form a {
+    font-size: 16px;
+    color: hsl(166, 100%, 37%);
+    text-decoration: none;
+}
+
+.form a:hover {
+    text-decoration: underline;
+}
+
+.form input.button {
+    color: #fff;
+    background: hsl(166, 100%, 37%);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.form input.button:hover {
+    background: #006653;
+}
+
+.signup {
+    font-size: 17px;
+    text-align: center;
+}
+
+.signup label {
+    color: #009579;
+    cursor: pointer;
+}
+
+.signup label:hover {
+    text-decoration: underline;
+}

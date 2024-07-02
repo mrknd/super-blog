@@ -76,7 +76,7 @@ class Post(models.Model):
         return reverse('blog:post_detail', args=[self.slug])
 
     def calculate_reading_time(self):
-        words_per_minut = 300
+        words_per_minut = 150
         words = self.body.split()
         num_words = len(words)
         reading_time = num_words / words_per_minut

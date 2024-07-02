@@ -24,8 +24,6 @@
     <!-- 
       - google font link
     -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
@@ -34,19 +32,11 @@
     -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+
     <!-- 
       - preload images
     -->
-    <link rel="preload" as="image" href="{% static 'images/hero-banner.png' %}">
-    <link rel="preload" as="image" href="{% static 'images/pattern-2.svg' %}">
     <link rel="preload" as="image" href="{% static 'images/pattern-3.svg' %}">
-
-
-    <style>
-        {% block style %}
-
-        {% endblock %}
-    </style>
 </head>
 <body id="top">
 
@@ -185,6 +175,8 @@
     <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
 </a>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <!-- 
   - custom js link
@@ -196,6 +188,8 @@
 -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
 </body>
 
 </html>

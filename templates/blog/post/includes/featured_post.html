@@ -3,8 +3,8 @@
         <div class="card feature-card-post-list">
             <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 303;">
                 <a href="{{ post.get_absolute_url }}" class="img-cover">
-                    <img src="{{ post.image.url }}" width="1602" height="903" loading="lazy"
-                         alt="Self-observation is the first step of inner unfolding" class="img-cover">
+{#                    <img src="{{ post.featured_image.url }}" width="1602" height="903" loading="lazy"#}
+{#                         alt="Self-observation is the first step of inner unfolding" class="img-cover">#}
                     <div class="overlay">
                         <div class="overlay-content">
                             <p>{{ post.short_description | truncatewords:25 }}</p>

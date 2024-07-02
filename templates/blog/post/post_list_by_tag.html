@@ -3,8 +3,6 @@
 {% load blog_tags %}
 {% load static %}
 
-{% block title %}Головна{% endblock %}
-
 {% block content %}
 
     <section class="section feature-post-list" aria-label="feature" id="featured">
@@ -13,31 +11,30 @@
                 {% include 'blog/post/includes/left-menu.html' %}
             </div>
             <div class="container">
+                <h1 class="category_title">Тег / <span class="category_title_category-name" style="color: #000;">#{{ tag }}</span></h1>
+            
 {#                <div class="carousel margin-feature">#}
 {#                    <div class="carousel-slides" id="carouselSlides">#}
 {#                        <!-- Зображення каруселі -->#}
 {#                        <img class="carousel-slide" src="{% static 'gifs/Frame-39652178.png.jpg' %}"#}
 {#                             alt="Опис першого зображення">#}
+{#                        <img class="carousel-slide" src="{% static 'gifs/Frame-39652178.png.jpg' %}"#}
+{#                             alt="Опис другого зображення">#}
 {#                    </div>#}
 {#                </div>#}
 
-                <!-- Loader Container -->
 
-                    {% include 'blog/post/includes/messages.html' %}
-                
+
 {#                {% if paged_posts.number == 1 %}#}
 {#                    {% include 'blog/post/includes/featured_post.html' %}#}
 {#                {% endif %}#}
-                {% include 'blog/post/includes/ads.html' %}
-
                 <ul class="feature-list-post-list">
-                
-                    {% for post in paged_posts %}
+                    {% for post in posts %}
                         <li>
                             <div class="card feature-card-post-list">
                                 <figure class="card-banner-post-list img-holder" style="--width: 1402; --height: 703;">
                                     <a href="{{ post.get_absolute_url }}" class="img-cover">
-                                        <img src="{{ post.image.url }}"  loading="lazy"
+                                        <img src="{{ post.image.url }}" width="1402" height="703" loading="lazy"
                                              alt="{{ post.title }}" class="img-cover">
                                         <div class="overlay">
                                             <div class="overlay-content">
@@ -57,7 +54,7 @@
                                             <span class="span">{{ post.calculate_reading_time }} хв.</span>
                                         </div>
                                     </div>
-                                    <h3 class="headline headline-3">
+                                    <h3 class="headline headline-3" >
                                         <a href="{{ post.get_absolute_url }}"
                                            class="card-title hover-2">{{ post.title }}</a>
                                     </h3>
@@ -70,11 +67,11 @@
                 {% include 'blog/pagination.html' with page=posts %}
             </div>
             <div class="right-ads">
-                <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.webp' %}" alt=""
+                <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
                                 style="max-width: 250px;"></a>
             </div>
         </div>
+    </section>
 
-    </section> 
 
 {% endblock %}

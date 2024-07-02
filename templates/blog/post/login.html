@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+
+{% load blog_tags %}
+{% load static %}
+
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+
+    <section class="section feature-post-list" aria-label="feature" id="featured">
+        <div class="main-container">
+            <div>
+                {% include 'blog/post/includes/left-menu.html' %}
+            </div>
+            <div class="container">
+                <div class="container-login card feature-card-login">
+                    <input type="checkbox" id="check">
+                    <div class="login form">
+                        <header>Увійти</header>
+                        {% include 'blog/post/includes/messages.html' %}
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="text" placeholder="Пошта" name="username">
+                            <input type="password" placeholder="Пароль" name="password">
+                            <a href="#">Забули пароль?</a>
+                            <input type="submit" class="button" value="Увійти">
+                        </form>
+                        <div class="signup">
+                            <span class="signup">Don't have an account?
+                             <label for="check">Signup</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="registration form">
+                        <header>Signup</header>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your email">
+                            <input type="password" placeholder="Create a password">
+                            <input type="password" placeholder="Confirm your password">
+                            <input type="button" class="button" value="Signup">
+                        </form>
+                        <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right-ads">
+                <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
+                                style="max-width: 250px;"></a>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

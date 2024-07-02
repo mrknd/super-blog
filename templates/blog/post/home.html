@@ -137,8 +137,6 @@
                     {#                    <button id="loginBtn" class="btn btn-primary">Вхід</button>#}
 
                     <!-- Модальне вікно -->
-                    {% include 'blog/post/includes/modal_login.html' %}
-                    {% include 'blog/post/includes/modal_register.html' %}
 
                     {#                    {% get_most_commented_posts as most_commented_posts %}#}
 
@@ -171,27 +169,27 @@
                                             <a href="{{ post.get_absolute_url }}"
                                                class="card-title hover-2">{{ post.title }}</a>
                                         </h3>
-{#                                        <div class="card-wrapper">#}
-{#                                            <div class="profile-card-post-list">#}
-{#                                                <div>#}
-{#                                                    <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{##}
-{#                                            <div class="card-tag-post-list">#}
-{#                                                {% for tag in post.tags.all %}#}
-{##}
-{#                                                    <div>#}
-{#                                                        <a href="{% url "blog:post_list_by_tag" tag.slug %}"#}
-{#                                                           class="span hover-2">#}
-{#                                                            #{{ tag.name }}#}
-{#                                                        </a>#}
-{#                                                    </div>#}
-{#                                                {% endfor %}#}
-{##}
-{#                                            </div>#}
-{##}
-{#                                        </div>#}
+                                        <div class="card-wrapper">
+                                            <div class="profile-card-post-list">
+                                                <div>
+                                                    <p class="card-subtitle-post-list">{{ post.created_at | date }}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-tag-post-list">
+                                                {% for tag in post.tags.all %}
+
+                                                    <div>
+                                                        <a href="{% url "blog:post_list_by_tag" tag.slug %}"
+                                                           class="span hover-2">
+                                                            #{{ tag.name }}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </li>

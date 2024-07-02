@@ -12,7 +12,7 @@
 
             <div class="container-post-detail">
                 <article>
-                    <div class="container bg-white" style="padding: 16px 16px 2px 16px;">
+                    <div class="container bg-white" style="padding: 16px 18px 2px 18px;">
                         <div class="post-header">
                             <h1 class="post-title">{{ single_post.title }}</h1>
                             <div class="post-image">
@@ -74,8 +74,6 @@
                                   style="margin: 40px 0 10px; font-size: 2.2rem;">Рекомендовані пости:</span>
                         </h2>
 
-                        {% include 'blog/post/includes/modal_login.html' %}
-                        {% include 'blog/post/includes/modal_register.html' %}
                         <ul class="feature-list-post-list-detail-bottom">
                             {% for post in similar_posts %}
                                 <li>
@@ -128,23 +126,21 @@
                 {% endif %}
                 <!-- Comments -->
 
-                {% include 'blog/post/includes/comment_form.html' %}
+{#                {% include 'blog/post/includes/comment_form.html' %}#}
 
             </div>
             <div class="detail-recomended-posts-left">
                 <div class="right-ads">
-                    <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
+                    <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.webp' %}" alt=""
                                     style="max-width: 250px; border: 15px"></a>
                 </div>
                 {% if  similar_posts %}
                     <div class="container">
                         <h2 class="headline headline-2 section-title" style="margin-top: 24px;">
                             <span class="span"
-                                  style="font-size: 2.2rem;">Останні пости:</span>
+                                  style="font-size: 2.2rem; padding: 0">Останні пости:</span>
                         </h2>
 
-                        {% include 'blog/post/includes/modal_login.html' %}
-                        {% include 'blog/post/includes/modal_register.html' %}
                         <ul class="feature-list-post-list-detail">
                             {% for post in recent_post %}
                                 <li>
