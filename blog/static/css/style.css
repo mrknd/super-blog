@@ -2183,7 +2183,7 @@ form {
     display: flex;
     flex-direction: column; /* Ensure that the content inside each card is arranged vertically */
     justify-content: space-between; /* Spread out the content evenly */
-    height: 100%; /* Make the card take the full height available */
+    height: 100%; /* Make the card take the full height available иии */
 }
 
 .feature-card-post-list .card-content-post-list {
