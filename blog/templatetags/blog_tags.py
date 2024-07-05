@@ -4,7 +4,9 @@ from django.db.models import Count
 from django.utils.safestring import mark_safe
 import markdown
 
-from ..models import Post, Comment
+from taggit.models import Tag
+from ..models import Post, Comment, Category
+
 
 register = template.Library()
 
@@ -45,5 +47,15 @@ def get_display_pages(current_page, last_page, display_range=5):
     if end_page - start_page < display_range:
         start_page = max(end_page - display_range + 1, 1)
     return range(start_page, end_page + 1)
+
+
+@register.simple_tag
+def get_categories():
+    return Category.objects.all()
+
+
+@register.simple_tag
+def get_tags():
+    return Tag.objects.all()
 
 

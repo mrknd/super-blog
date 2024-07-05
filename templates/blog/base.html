@@ -41,129 +41,255 @@
 <body id="top">
 
 {% include 'blog/post/includes/navbar.html' %}
-{% block content %}
 
-{% endblock %}
+<section class="section feature-post-list" aria-label="feature" id="featured">
+    <div class="main-container">
+        <div>
+            {% include 'blog/post/includes/left-menu.html' %}
+        </div>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+</section>
 
 <!----------------- Footer ------------------------------->
 
 <footer>
-    <div class="container">
 
-        <div class="card footer">
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button" id="accordion-button">
+                    © 2019-2024 Crypto Centuria
+                    <ul class="social-list">
 
-            <div class="section footer-top">
+                        <li>
+                            <a href="#" class="social-link">
+                                <ion-icon name="logo-twitter"></ion-icon>
 
-                <div class="footer-brand">
+                                <span class="span">Twitter</span>
+                            </a>
+                        </li>
 
-                    <a href="/" class="logo">
-                        <img src="{% static 'images/logo.svg' %}" width="119" height="37" loading="lazy"
-                             alt="Wren logo">
-                    </a>
+                        <li>
+                            <a href="#" class="social-link">
+                                <ion-icon name="logo-instagram"></ion-icon>
 
-                    <p class="footer-text">
-                        When an unknown prnoto sans took a galley and scrambled it to make specimen book not only five
-                        When an
-                        unknown prnoto sans took a galley and scrambled it to five centurie.
-                    </p>
-
-                    <p class="footer-list-title">Address</p>
-
-                    <address class="footer-text address">
-                        123 Main Street <br>
-                        New York, NY 10001
-                    </address>
-
-                </div>
-
-                <div class="footer-list">
-
-                    <p class="footer-list-title">Категорії</p>
-
-                    <ul>
-                        {% for category in categories %}
-                            <li>
-                                <a href="#" class="footer-link hover-2">{{ category }}</a>
-                            </li>
-                        {% endfor %}
-
+                                <span class="span">Instagram</span>
+                            </a>
+                        </li>
 
                     </ul>
-
-                </div>
-
-                <div class="footer-list">
-
-                    <p class="footer-list-title">Newsletter</p>
-
-                    <p class="footer-text">
-                        Sign up to be first to receive the latest stories inspiring us, case studies, and industry news.
-                    </p>
-
-                    <div class="input-wrapper">
-                        <input type="text" name="name" placeholder="Your name" required class="input-field"
-                               autocomplete="off">
-
-                        <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <div class="input-wrapper">
-                        <input type="email" name="email_address" placeholder="Emaill address" required
-                               class="input-field"
-                               autocomplete="off">
-
-                        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
-                        <span class="span">Subscribe</span>
-
-                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                    </a>
-
-                </div>
+                    <span class="arrow"></span>
+                </button>
 
             </div>
+            <div class="accordion-content">
+                <div class="container">
 
-            <div class="footer-bottom">
+                    <div class="footer">
 
-                <p class="copyright">
-                    &copy; Developed by <a href="#" class="copyright-link">codewithsadee.</a>
-                </p>
+                        <div class="section-changed footer-top">
 
-                <ul class="social-list">
 
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
+                            <div class="footer-list">
+                                <div>
+                                    <p class="footer-list-title">Newsletter</p>
+                                    
+                                    <div class="input-wrapper">
+                                        <input type="text" name="name" placeholder="Your name" required
+                                               class="input-field"
+                                               autocomplete="off">
 
-                            <span class="span">Twitter</span>
-                        </a>
-                    </li>
+                                        <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                                    </div>
 
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-linkedin"></ion-icon>
+                                    <div class="input-wrapper">
+                                        <input type="email" name="email_address" placeholder="Emaill address" required
+                                               class="input-field"
+                                               autocomplete="off">
 
-                            <span class="span">LinkedIn</span>
-                        </a>
-                    </li>
+                                        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                                    </div>
 
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
+                                    <a href="#" class="btn btn-primary">
+                                        <span class="span">Subscribe</span>
 
-                            <span class="span">Instagram</span>
-                        </a>
-                    </li>
+                                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                                    </a>
 
-                </ul>
+                                </div>
+                                
+                                <div>
 
+                                    <div class="footer-text footer-display">
+                                        <p>
+                                            2019 – 2024 Affhub Media. Всі права зарезервовані. Републікація матеріалів з
+                                            сайту дозволяється лише за умови дотримання встановлених правил. Вміст сайту
+                                            може містити інформацію, не придатну для осіб молодше 16 років.
+                                        </p>
+                                        <p>
+                                        
+                                        Матеріали, розміщені на веб-сайті https://affhub.net, призначені тільки для
+                                        ознайомлення. Ми докладаємо всіх зусиль, щоб забезпечити максимальну точність та
+                                        повноту опублікованих даних.
+                                        </p>
+                                        
+                                        <p>
+                                            Адміністрація сайту Affhub.net не несе відповідальності за будь-які збитки,
+                                            включно з фінансовими, які можуть виникнути внаслідок неправильного
+                                            розуміння
+                                            інформації або використання недостовірних чи некоректних даних,
+                                            представлених на
+                                            сайті.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="footer-bottom">
+
+                            <p class="copyright">
+                                &copy; Developed by <a href="#" class="copyright-link">codewithsadee.</a>
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-
         </div>
-
     </div>
+
+
+    {#    <div class="container">#}
+    {##}
+    {#        <div class="card footer">#}
+    {##}
+    {#            <div class="section footer-top">#}
+    {##}
+    {#                <div class="footer-brand">#}
+    {##}
+    {#                    <a href="/" class="logo">#}
+    {#                        <img src="{% static 'images/logo.svg' %}" width="119" height="37" loading="lazy"#}
+    {#                             alt="Wren logo">#}
+    {#                    </a>#}
+    {##}
+    {#                    <p class="footer-text">#}
+    {#                        When an unknown prnoto sans took a galley and scrambled it to make specimen book not#}
+    {#                        only five#}
+    {#                        When an#}
+    {#                        unknown prnoto sans took a galley and scrambled it to five centurie.#}
+    {#                    </p>#}
+    {##}
+    {#                    <p class="footer-list-title">Address</p>#}
+    {##}
+    {#                    <address class="footer-text address">#}
+    {#                        123 Main Street <br>#}
+    {#                        New York, NY 10001#}
+    {#                    </address>#}
+    {##}
+    {#                </div>#}
+    {##}
+    {#                <div class="footer-list">#}
+    {##}
+    {#                    <p class="footer-list-title">Категорії</p>#}
+    {##}
+    {#                    <ul>#}
+    {#                        {% for category in categories %}#}
+    {#                            <li>#}
+    {#                                <a href="#" class="footer-link hover-2">{{ category }}</a>#}
+    {#                            </li>#}
+    {#                        {% endfor %}#}
+    {##}
+    {##}
+    {#                    </ul>#}
+    {##}
+    {#                </div>#}
+    {##}
+    {#                <div class="footer-list">#}
+    {##}
+    {#                    <p class="footer-list-title">Newsletter</p>#}
+    {##}
+    {#                    <p class="footer-text">#}
+    {#                        Sign up to be first to receive the latest stories inspiring us, case studies, and#}
+    {#                        industry news.#}
+    {#                    </p>#}
+    {##}
+    {#                    <div class="input-wrapper">#}
+    {#                        <input type="text" name="name" placeholder="Your name" required class="input-field"#}
+    {#                               autocomplete="off">#}
+    {##}
+    {#                        <ion-icon name="person-outline" aria-hidden="true"></ion-icon>#}
+    {#                    </div>#}
+    {##}
+    {#                    <div class="input-wrapper">#}
+    {#                        <input type="email" name="email_address" placeholder="Emaill address" required#}
+    {#                               class="input-field"#}
+    {#                               autocomplete="off">#}
+    {##}
+    {#                        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>#}
+    {#                    </div>#}
+    {##}
+    {#                    <a href="#" class="btn btn-primary">#}
+    {#                        <span class="span">Subscribe</span>#}
+    {##}
+    {#                        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>#}
+    {#                    </a>#}
+    {##}
+    {#                </div>#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#        #}
+    {#        #}
+    {#        #}
+    {#            <div class="footer-bottom">#}
+    {##}
+    {#                <p class="copyright">#}
+    {#                    &copy; Developed by <a href="#" class="copyright-link">codewithsadee.</a>#}
+    {#                </p>#}
+    {##}
+    {#                <ul class="social-list">#}
+    {##}
+    {#                    <li>#}
+    {#                        <a href="#" class="social-link">#}
+    {#                            <ion-icon name="logo-twitter"></ion-icon>#}
+    {##}
+    {#                            <span class="span">Twitter</span>#}
+    {#                        </a>#}
+    {#                    </li>#}
+    {##}
+    {#                    <li>#}
+    {#                        <a href="#" class="social-link">#}
+    {#                            <ion-icon name="logo-linkedin"></ion-icon>#}
+    {##}
+    {#                            <span class="span">LinkedIn</span>#}
+    {#                        </a>#}
+    {#                    </li>#}
+    {##}
+    {#                    <li>#}
+    {#                        <a href="#" class="social-link">#}
+    {#                            <ion-icon name="logo-instagram"></ion-icon>#}
+    {##}
+    {#                            <span class="span">Instagram</span>#}
+    {#                        </a>#}
+    {#                    </li>#}
+    {##}
+    {#                </ul>#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {##}
+    {#    </div>#}
 </footer>
 
 

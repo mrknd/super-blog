@@ -85,6 +85,7 @@ def post_list_by_category(request, category_id):
     context = {
         'posts': posts,
         'category': category,
+        'type': 'category',
     }
     return render(request=request, template_name='blog/post/post_list_by_category.html', context=context)
 
@@ -96,8 +97,9 @@ def post_list_by_tag(request, tag_slug=None):
     context = {
         'posts': posts,
         'tag': tag,
+        'type': 'tag',
     }
-    return render(request=request, template_name='blog/post/post_list_by_tag.html', context=context)
+    return render(request=request, template_name='blog/post/post_list_by_category.html', context=context)
 
 
 def post_detail(request, slug=None):

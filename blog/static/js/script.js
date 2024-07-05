@@ -1,5 +1,19 @@
 'use strict';
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionButton = document.getElementById('accordion-button');
+    const accordionContent = document.querySelector('.accordion-content');
+
+    accordionButton.addEventListener('click', function () {
+        const isOpen = accordionButton.classList.toggle('active');
+        if (isOpen) {
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+        } else {
+            accordionContent.style.maxHeight = null;
+        }
+    });
+});
 // // -------------Message ---------------------------------
 window.onload = function () {
     setTimeout(function () {
@@ -10,10 +24,8 @@ window.onload = function () {
                 messagesContainer.style.display = 'none'; // Повністю прибрати елемент після зникнення
             }, 500); // Час для завершення анімації
         }
-    }, 2000); // Час показу повідомлення перед початком зникнення
+    }, 3000); // Час показу повідомлення перед початком зникнення
 }
-
-
 
 
 /**

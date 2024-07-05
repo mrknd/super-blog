@@ -1,4 +1,6 @@
 {% load static %}
+{% load blog_tags %}
+
 
 <div class="menu-container">
     <div>
@@ -11,8 +13,10 @@
         {#            <li><a href="#"><span class="sm-line">Блоги</span></a></li>#}
         {#        </ul>#}
         <ul class="menu">
+        {% get_categories as categories %}
             {% for category in categories %}
-                <li><a href="{% url 'blog:post_list_by_category' category.id %}"><span class="sm-line">{{ category }}</span></a></li>
+                <li><a href="{% url 'blog:post_list_by_category' category.id %}"><span
+                        class="sm-line">{{ category }}</span></a></li>
             {% endfor %}
 
         </ul>
@@ -23,27 +27,24 @@
     <div>
         <h3 class="menu-header ">Теги</h3>
         <ul class="menu">
+        {% get_tags as tags %}
             {% for tag in tags %}
                 <li><a href="{% url 'blog:post_list_by_tag' tag.slug %}"><span class="sm-line">{{ tag }}</span></a></li>
             {% endfor %}
         </ul>
     </div>
     <div class="flex-social-icons">
-        <a href="" class="" target="_blank"><img
-                src="{% static 'icons/instagram-icon.webp' %}"
-                alt="" style="width: 40px"></a>
-        <a href="" class="" target="_blank"><img
-                src="{% static 'icons/telegram-icon.webp' %}"
-                alt="" style="width: 40px"></a>
-
-        <a href="" class="" target="_blank"><img
-                src="{% static 'icons/discord-icon.png' %}"
-                alt="" style="width: 40px"></a>
-        <a href="" class="" target="_blank"><img
-                src="{% static 'icons/tiktok-icon.webp' %}"
-                alt="" style="width: 40px"></a>
-        <a href="" class="" target="_blank"><img
-                src="{% static 'icons/linkedin-icon.webp' %}"
-                alt="" style="width: 40px"></a>
+        <a class="icon-media" href="" target="_blank"><img
+                    src="{% static 'icons/instagram-svgrepo-com.svg' %}"
+                    alt="" style="width: 30px; border-radius: 8px"></a>
+            <a href="" class="" target="_blank"><img
+                    src="{% static 'icons/twitter-svgrepo-com.svg' %}"
+                    alt="" style="width: 30px; border-radius: 8px"></a>
+            <a href="" class="" target="_blank"><img
+                    src="{% static 'icons/telegram-svgrepo-com.svg' %}"
+                    alt="" style="width: 30px; border-radius: 8px"></a>
+            <a href="" class="" target="_blank"><img
+                    src="{% static 'icons/youtube-svgrepo-com.svg' %}"
+                    alt="" style="width: 30px; border-radius: 8px"></a>
     </div>
 </div>

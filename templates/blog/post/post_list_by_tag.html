@@ -5,11 +5,7 @@
 
 {% block content %}
 
-    <section class="section feature-post-list" aria-label="feature" id="featured">
-        <div class="main-container">
-            <div>
-                {% include 'blog/post/includes/left-menu.html' %}
-            </div>
+
             <div class="container">
                 <h1 class="category_title">Тег / <span class="category_title_category-name" style="color: #000;">#{{ tag }}</span></h1>
             
@@ -70,8 +66,6 @@
                 <a href=""><img src="{% static 'gifs/260x505-affhub_1-1.gif' %}" alt=""
                                 style="max-width: 250px;"></a>
             </div>
-        </div>
-    </section>
 
 
 {% endblock %}
